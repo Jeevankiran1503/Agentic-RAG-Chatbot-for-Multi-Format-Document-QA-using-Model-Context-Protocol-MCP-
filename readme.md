@@ -58,9 +58,10 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 Install dependencies:
 
-bash
+bash '''
 pip install -r requirements.txt
 Create .env file:
+'''
 
 ini
 GEMINI_API_KEY=your_google_gemini_api_key
@@ -69,7 +70,9 @@ Start the Streamlit interface:
 
 bash
 streamlit run app.py
+
 📂 Project Structure
+
 text
 agentic-rag-chatbot/
 ├── agents/                   # Agent implementations
