@@ -45,56 +45,44 @@ This project is an agent-based Retrieval-Augmented Generation (RAG) chatbot that
 - Python 3.9+
 - A valid Google Gemini API key (stored in a `.env` file as `GEMINI_API_KEY`)
 
-### Installation
-
-1. Clone the repository
-
-   ```bash
-   git clone https://github.com/your-username/agentic-rag-chatbot.git
-   cd agentic-rag-chatbot
-Create a virtual environment
+Installation
+Clone the repository:
 
 bash
-Copy
-Edit
+git clone https://github.com/your-username/agentic-rag-chatbot.git
+cd agentic-rag-chatbot
+Create and activate virtual environment:
+
+bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install dependencies
+Install dependencies:
 
 bash
-Copy
-Edit
 pip install -r requirements.txt
-Add your .env file
+Create .env file:
 
 ini
-Copy
-Edit
 GEMINI_API_KEY=your_google_gemini_api_key
-Running the App
-To start the Streamlit chatbot UI:
+Running the Application
+Start the Streamlit interface:
 
 bash
-Copy
-Edit
 streamlit run app.py
-This will open the chatbot in your browser. You can upload documents, ask questions, and get intelligent answers.
-
-Folder Structure
-bash
-Copy
-Edit
-├── agents/
-│   ├── ingestion_agent.py
-│   ├── retrieval_agent.py
-│   ├── llm_response_agent.py
-│   └── coordinator_agent.py
-├── utils/
-│   ├── file_loader.py
-│   └── mcp.py
-├── chroma_persistent_storage/
-├── app.py               # Streamlit frontend
-├── main.py              # Script for local testing
-├── .env
-├── requirements.txt
-└── README.md
+📂 Project Structure
+text
+agentic-rag-chatbot/
+├── agents/                   # Agent implementations
+│   ├── ingestion_agent.py    # Document processing
+│   ├── retrieval_agent.py    # Vector store operations
+│   ├── llm_response_agent.py # LLM interface
+│   └── coordinator_agent.py  # Workflow orchestration
+├── utils/                    # Utility modules
+│   ├── file_loader.py        # Document loading
+│   └── mcp.py               # Model Communication Protocol
+├── chroma_persistent_storage/ # Vector database
+├── app.py                    # Streamlit application
+├── main.py                   # CLI testing script
+├── .env                      # Environment variables
+├── requirements.txt          # Dependencies
+└── README.md                 # This file
