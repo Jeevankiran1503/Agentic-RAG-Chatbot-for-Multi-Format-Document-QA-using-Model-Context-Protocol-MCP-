@@ -1,21 +1,21 @@
-# 🤖 Agentic RAG Chatbot
+# Agentic RAG Chatbot
 
 An agent-based Retrieval-Augmented Generation (RAG) chatbot that answers user queries from uploaded documents using modular agents and the Model Communication Protocol (MCP). Supports multiple file formats and provides context-aware, intelligent responses.
 
 ---
 
-## ✨ Features
+## Features
 
-- 📂 Multi-format document ingestion: `PDF`, `DOCX`, `PPTX`, `CSV`, `TXT`, `MD`
-- 🧠 Agentic architecture using **Model Communication Protocol (MCP)**
-- 🔍 ChromaDB-based semantic search with `MiniLM` embeddings
-- 💬 Natural language responses powered by **Gemini 2.5**
-- 🖥️ Streamlit UI for interactive chat and file uploads
-- 🔄 Session-based memory reset for consistent responses
+-  Multi-format document ingestion: `PDF`, `DOCX`, `PPTX`, `CSV`, `TXT`, `MD`
+-  Agentic architecture using **Model Communication Protocol (MCP)**
+-  ChromaDB-based semantic search with `MiniLM` embeddings
+-  Natural language responses powered by **Gemini 2.5**
+-  Streamlit UI for interactive chat and file uploads
+-  Session-based memory reset for consistent responses
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 - **IngestionAgent**: Parses and chunks content from multi-format documents  
 - **RetrievalAgent**: Indexes chunks in ChromaDB and retrieves relevant context  
@@ -25,7 +25,7 @@ An agent-based Retrieval-Augmented Generation (RAG) chatbot that answers user qu
 
 ---
 
-## 🧰 Tech Stack
+# Tech Stack
 
 | Component        | Technology                                 |
 |------------------|--------------------------------------------|
@@ -38,14 +38,14 @@ An agent-based Retrieval-Augmented Generation (RAG) chatbot that answers user qu
 
 ---
 
-## 🚀 Getting Started
+# Getting Started
 
-### ✅ Prerequisites
+### Prerequisites
 
 - Python 3.9+
 - Google Gemini API Key stored in a `.env` file
 
-### 🛠️ Installation
+### Installation
 
 Clone the repository:
 
@@ -73,7 +73,7 @@ Create a `.env` file and add your API key:
 GEMINI_API_KEY=your_google_gemini_api_key
 ```
 
-### ▶️ Run the Application
+### Run the Application
 
 Start the Streamlit app:
 
@@ -83,7 +83,7 @@ streamlit run app.py
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 agentic-rag-chatbot/
@@ -102,7 +102,7 @@ agentic-rag-chatbot/
 ├── requirements.txt          # Dependencies
 └── README.md                 # Project documentation
 ```
-## 🙋‍♂️ Acknowledgments
+## Acknowledgments
 
 - [ChromaDB](https://www.trychroma.com/)
 - [Sentence Transformers](https://www.sbert.net/)
