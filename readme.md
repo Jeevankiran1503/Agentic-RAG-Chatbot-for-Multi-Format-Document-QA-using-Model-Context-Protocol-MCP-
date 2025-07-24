@@ -1,31 +1,31 @@
 # Agentic RAG Chatbot
 
-This project is an agent-based Retrieval-Augmented Generation (RAG) chatbot that answers questions from user-uploaded documents using a modular architecture and agent coordination protocol (MCP). It supports multiple file formats and delivers intelligent, context-aware responses.
+An agent-based Retrieval-Augmented Generation (RAG) chatbot that answers user queries from uploaded documents using modular agents and the Model Communication Protocol (MCP). Supports multiple file formats and provides context-aware, intelligent responses.
 
 ---
 
 ## Features
 
-- Multi-format document ingestion: PDF, DOCX, PPTX, CSV, TXT, MD
-- Agentic architecture using Model Communication Protocol (MCP)
-- ChromaDB-based semantic search with MiniLM embeddings
-- Gemini 2.5 for natural language response generation
-- Streamlit UI for file upload and interactive chat
-- Session-based memory reset for consistent results
+-  Multi-format document ingestion: `PDF`, `DOCX`, `PPTX`, `CSV`, `TXT`, `MD`
+-  Agentic architecture using **Model Communication Protocol (MCP)**
+-  ChromaDB-based semantic search with `MiniLM` embeddings
+-  Natural language responses powered by **Gemini 2.5**
+-  Streamlit UI for interactive chat and file uploads
+-  Session-based memory reset for consistent responses
 
 ---
 
 ## Architecture Overview
 
-- **IngestionAgent**: Parses multi-format documents and chunks content
-- **RetrievalAgent**: Adds chunks to ChromaDB and retrieves relevant context
-- **LLMResponseAgent**: Formats the prompt and communicates with the LLM
-- **CoordinatorAgent**: Manages interaction between agents using MCP
-- **Streamlit Frontend**: Enables file uploads, clearing files, and chatting with the system
+- **IngestionAgent**: Parses and chunks content from multi-format documents  
+- **RetrievalAgent**: Indexes chunks in ChromaDB and retrieves relevant context  
+- **LLMResponseAgent**: Formats prompts and communicates with the LLM  
+- **CoordinatorAgent**: Orchestrates agents using MCP  
+- **Streamlit Frontend**: Enables file upload, clearing, and chat interactions
 
 ---
 
-## Tech Stack
+# Tech Stack
 
 | Component        | Technology                                 |
 |------------------|--------------------------------------------|
@@ -38,41 +38,46 @@ This project is an agent-based Retrieval-Augmented Generation (RAG) chatbot that
 
 ---
 
-## Getting Started
+# Getting Started
 
 ### Prerequisites
 
 - Python 3.9+
-- A valid Google Gemini API key (stored in a `.env` file as `GEMINI_API_KEY`)
+- Google Gemini API Key stored in a `.env` file
 
-Installation
+### Installation
+
 Clone the repository:
 
-bash
+```bash
 git clone https://github.com/your-username/agentic-rag-chatbot.git
 cd agentic-rag-chatbot
-Create and activate virtual environment:
+```
 
-bash
+Create and activate a virtual environment:
+
+```bash
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
 Install dependencies:
 
-bash '''
+bash
 pip install -r requirements.txt
 Create .env file:
-'''
 
-ini
+```ini
 GEMINI_API_KEY=your_google_gemini_api_key
-Running the Application
-Start the Streamlit interface:
+```
 
-bash
+### Run the Application
+
+Start the Streamlit app:
+
+```bash
 streamlit run app.py
-
 📂 Project Structure
-
 text
 agentic-rag-chatbot/
 ├── agents/                   # Agent implementations
@@ -82,10 +87,17 @@ agentic-rag-chatbot/
 │   └── coordinator_agent.py  # Workflow orchestration
 ├── utils/                    # Utility modules
 │   ├── file_loader.py        # Document loading
-│   └── mcp.py               # Model Communication Protocol
+│   └── mcp.py                # Model Communication Protocol
 ├── chroma_persistent_storage/ # Vector database
 ├── app.py                    # Streamlit application
 ├── main.py                   # CLI testing script
 ├── .env                      # Environment variables
 ├── requirements.txt          # Dependencies
-└── README.md                 # This file
+└── README.md                 # Project documentation
+```
+## Acknowledgments
+
+- [ChromaDB](https://www.trychroma.com/)
+- [Sentence Transformers](https://www.sbert.net/)
+- [Gemini API by Google AI](https://ai.google.dev/)
+- [Streamlit](https://streamlit.io/)
