@@ -49,9 +49,11 @@ Installation
 Clone the repository:
 
 bash
+"""
 git clone https://github.com/your-username/agentic-rag-chatbot.git
 cd agentic-rag-chatbot
 Create and activate virtual environment:
+"""
 
 bash
 python -m venv venv
@@ -64,13 +66,17 @@ Create .env file:
 
 ini
 GEMINI_API_KEY=your_google_gemini_api_key
+
 Running the Application
 Start the Streamlit interface:
 
 bash
 streamlit run app.py
+
 📂 Project Structure
+
 text
+
 agentic-rag-chatbot/
 ├── agents/                   # Agent implementations
 │   ├── ingestion_agent.py    # Document processing
