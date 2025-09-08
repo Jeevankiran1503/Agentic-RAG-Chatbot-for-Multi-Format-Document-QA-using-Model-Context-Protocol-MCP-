@@ -1,6 +1,8 @@
+
 import google.generativeai as genai
 from dotenv import load_dotenv
 import os
+from utils.mcp import create_mcp_message
 
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
@@ -25,16 +27,8 @@ Answer:
     except Exception as e:
         return f"LLM error: {e}"
 
-def create_mcp_message(sender, receiver, type_, payload, trace_id=None):
-    return {
-        "sender": sender,
-        "receiver": receiver,
-        "type": type_,
-        "trace_id": trace_id,
-        "payload": payload
-    }
 
-def handle_message(mcp_message):
+
     if mcp_message["type"] == "GENERATE_RESPONSE":
         question = mcp_message["payload"]["question"]
         top_chunks = mcp_message["payload"]["top_chunks"]
@@ -42,7 +36,7 @@ def handle_message(mcp_message):
         return create_mcp_message(
             sender="LLMResponseAgent",
             receiver=mcp_message["sender"],
-            type_="FINAL_RESPONSE",
+            msg_type="FINAL_RESPONSE",
             payload={"final_response": final_response},
             trace_id=mcp_message["trace_id"]
         )

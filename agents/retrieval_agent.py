@@ -1,7 +1,9 @@
+
 import chromadb
 from chromadb.utils import embedding_functions
 import shutil
 import os
+from utils.mcp import create_mcp_message
 
 CHROMA_PATH = "chroma_persistent_storage"
 if os.path.exists(CHROMA_PATH):
@@ -24,16 +26,8 @@ def run_retrieval_agent(query, n_results=3):
     results = collection.query(query_texts=[query], n_results=n_results, include=["documents"])
     return [doc for sublist in results["documents"] for doc in sublist]
 
-def create_mcp_message(sender, receiver, type_, payload, trace_id=None):
-    return {
-        "sender": sender,
-        "receiver": receiver,
-        "type": type_,
-        "trace_id": trace_id,
-        "payload": payload
-    }
 
-def handle_message(mcp_message):
+
     msg_type = mcp_message["type"]
     trace_id = mcp_message["trace_id"]
 
@@ -43,7 +37,7 @@ def handle_message(mcp_message):
         return create_mcp_message(
             sender="RetrievalAgent",
             receiver=mcp_message["sender"],
-            type_="CHUNKS_ADDED",
+            msg_type="CHUNKS_ADDED",
             payload={"count": len(chunks)},
             trace_id=trace_id
         )
@@ -55,7 +49,7 @@ def handle_message(mcp_message):
         return create_mcp_message(
             sender="RetrievalAgent",
             receiver=mcp_message["sender"],
-            type_="CONTEXT_RESPONSE",
+            msg_type="CONTEXT_RESPONSE",
             payload={"top_chunks": top_chunks, "query": query},
             trace_id=trace_id
         )
