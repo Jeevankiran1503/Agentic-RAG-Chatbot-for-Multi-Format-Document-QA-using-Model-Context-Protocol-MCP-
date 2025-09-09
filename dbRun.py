@@ -6,7 +6,7 @@ embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction("all-Min
 chroma_client = chromadb.PersistentClient(path=CHROMA_PATH)
 collection = chroma_client.get_collection("document_qa_collection")
 
-# Corrected: 'ids' is not supported, use 'metadatas'
+
 results = collection.get(include=["documents", "embeddings", "metadatas"])
 
 for i in range(len(results["documents"])):
