@@ -21,7 +21,7 @@ load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 # Instantiate the specific generative model to be used for answering questions.
-model = genai.GenerativeModel("gemini-2.5-pro") 
+model = genai.GenerativeModel("gemini-2.5-flash") 
 
 # --- Core Logic Function ---
 
