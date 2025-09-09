@@ -1,8 +1,6 @@
-
 import uuid
 from utils.file_loader import load_documents, basic_chunk_by_paragraph
 from utils.mcp import create_mcp_message
-
 def run_ingestion_agent(document_path):
     documents = load_documents(document_path)
     all_chunks = []
@@ -18,6 +16,8 @@ def run_ingestion_agent(document_path):
 
     return all_chunks
 
+
+
 def handle_message(mcp_message):
     if mcp_message["type"] == "INGEST":
         document_path = mcp_message["payload"]["document_path"]
@@ -25,7 +25,7 @@ def handle_message(mcp_message):
         return create_mcp_message(
             sender="IngestionAgent",
             receiver=mcp_message["sender"],
-            msg_type="CHUNKS_ADDED",
+            type_="CHUNKS_ADDED",   
             payload={"chunks": chunks},
             trace_id=mcp_message["trace_id"]
         )

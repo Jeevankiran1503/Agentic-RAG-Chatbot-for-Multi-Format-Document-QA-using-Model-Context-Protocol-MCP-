@@ -1,9 +1,8 @@
-
 import google.generativeai as genai
 from dotenv import load_dotenv
 import os
 from utils.mcp import create_mcp_message
-
+from utils.mcp import create_mcp_message
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel("gemini-2.5-pro")
@@ -27,18 +26,17 @@ Answer:
     except Exception as e:
         return f"LLM error: {e}"
 
-
-
-    if mcp_message["type"] == "GENERATE_RESPONSE":
-        question = mcp_message["payload"]["question"]
-        top_chunks = mcp_message["payload"]["top_chunks"]
-        final_response = run_llm_response_agent(question, top_chunks)
-        return create_mcp_message(
-            sender="LLMResponseAgent",
-            receiver=mcp_message["sender"],
-            msg_type="FINAL_RESPONSE",
-            payload={"final_response": final_response},
-            trace_id=mcp_message["trace_id"]
-        )
-    else:
-        raise ValueError(f"Unknown message type: {mcp_message['type']}")
+def handle_message(mcp_message):
+        if mcp_message["type"] == "GENERATE_RESPONSE":
+            question = mcp_message["payload"]["question"]
+            top_chunks = mcp_message["payload"]["top_chunks"]
+            final_response = run_llm_response_agent(question, top_chunks)
+            return create_mcp_message(
+                sender="LLMResponseAgent",
+                receiver=mcp_message["sender"],
+                type_="FINAL_RESPONSE",
+                payload={"final_response": final_response},
+                trace_id=mcp_message["trace_id"]
+            )
+        else:
+            raise ValueError(f"Unknown message type: {mcp_message['type']}")
